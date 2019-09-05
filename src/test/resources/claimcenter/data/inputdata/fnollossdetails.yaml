@@ -1,0 +1,8 @@
+COMMERCIAL_AUTO:
+  loss_details: "Collision with vehicle on the right causing fender-bender"
+  loss_cause: "3"
+  loss_location: "2"
+  loss_jurisdiction: "3"
+  fault_rating: "3"
+  add_vehicle: "click"
+

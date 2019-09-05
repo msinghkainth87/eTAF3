@@ -1,0 +1,6 @@
+GAJENDRA_MAHADEVAN_PERSONAL: &personaldata
+  USERNAME: ""
+  PASSWORD: ""
+  SIGN_IN: "click"
+
+SAMSUNG_GALAXY_S10_PLUS_CASE: *personaldata

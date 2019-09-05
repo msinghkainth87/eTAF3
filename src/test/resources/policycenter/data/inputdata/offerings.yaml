@@ -1,0 +1,3 @@
+HAPPY_PATH:
+  OFFERING_SELECTION: "::ByText::Standard"
+  NEXT: "click"

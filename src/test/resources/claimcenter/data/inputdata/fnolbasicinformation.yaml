@@ -1,0 +1,5 @@
+COMMERCIAL_AUTO:
+  reported_by_name: "2"
+  relation_to_insured: "2"
+  involved_vehicle_0: click
+  next: click

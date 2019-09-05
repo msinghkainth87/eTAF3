@@ -1,0 +1,6 @@
+SUPER_USER:
+  USERNAME: su
+  PASSWORD: gw
+CASUALTY_USER:
+  USERNAME: gajendra
+  PASSWORD: varadhan

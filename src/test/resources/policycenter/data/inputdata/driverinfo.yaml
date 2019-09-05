@@ -1,0 +1,19 @@
+HAPPY_PATH_2:
+  DRIVER_FIRSTNAME: "Robert"
+  DRIVER_LASTNAME: "Stark"
+  DRIVER_GENDER: "::ByText::Male"
+  DRIVER_BIRTH_DATE: "01/01/1978"
+  DRIVER_LICENSE_NUMBER: "UL013043"
+  DRIVER_LICENSE_STATE: "::ByText::Georgia"
+  DRIVER_OK: "click"
+
+HAPPY_PATH:
+  DRIVER_FIRSTNAME: <%faker.name.firstName:%>
+  DRIVER_LASTNAME: <%faker.name.lastName:%>
+  DRIVER_GENDER: "::ByText::Male"
+  DRIVER_BIRTH_DATE: "01/01/1978"
+  DRIVER_LICENSE_NUMBER: <%regex:[A-Z]{2}[0-9]{6}%>
+  DRIVER_LICENSE_STATE: "::ByText::Georgia"
+  DRIVER_OK: "click"
+
+

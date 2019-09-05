@@ -1,0 +1,48 @@
+PREAPP_INPUT: &preapp
+  COMPANY_NAME: <%faker.company.name:%>
+  <<: &address_component
+    ADDRESS_ONE: 55 Ivan Allen Jr. Blvd
+    ADDRESS_TWO: Suite 800
+    CITY: <%faker.address.city:%>
+    STATE: <%regex:[0-9]|[1-3][0-9]%>
+  SALUTATION: <%regex:[0-3]%>
+  FIRST_NAME: <%regex:[A-Z][a-z]{5}%>
+  MIDDLE_INITITAL: V
+  LAST_NAME: <%faker.name.lastName:%>
+  JOB_TITLE: Senior
+  EMAIL: gajendra.mahadevan@ey.com
+  COMPANY_URL: <%faker.company.url:%>
+
+XYZ:
+  COMPANY_NAME: Ernst&Young US LLP
+  ADDRESS_ONE: 55 Ivan Allen Jr. Blvd
+  ADDRESS_TWO: Suite 800
+  CITY: Atlanta
+  STATE: GA
+  SALUTATION: Mr.
+  FIRST_NAME: Justin
+  MIDDLE_INITITAL: V
+  LAST_NAME: Mahadevan
+  JOB_TITLE: Senior
+  EMAIL: gajendra.mahadevan@ey.com
+  COMPANY_URL: https://www.ey.com
+
+
+ANCHOR_EXAMPLE: *preapp
+
+EXTEND_EXAMPLE:
+  <<: *preapp
+  COMPANY_NAME: Freddie Mac Corporation
+  ADDRESS_ONE: 8200 Jones Branch Drive
+  ADDRESS_TWO: HQ1
+
+EXTEND_INLINE_EXAMPLE:
+    COMPANY_NAME: Ernst&Young US LLP
+    <<: *address_component
+    SALUTATION: Mr.
+    FIRST_NAME: Justin
+    MIDDLE_INITITAL: V
+    LAST_NAME: Mahadevan
+    JOB_TITLE: Senior
+    EMAIL: gajendra.mahadevan@ey.com
+    COMPANY_URL: https://www.ey.com

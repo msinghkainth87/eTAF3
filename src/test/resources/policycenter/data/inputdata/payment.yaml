@@ -1,0 +1,3 @@
+HAPPY_PATH:
+  BIND_OPTIONS: "click"
+  BIND_AND_ISSUE_POLICY: "click"

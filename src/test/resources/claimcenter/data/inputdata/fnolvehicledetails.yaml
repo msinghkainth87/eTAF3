@@ -1,0 +1,21 @@
+COMMERCIAL_AUTO:
+  loss_party_insured: click
+  select_vehicle: "1"
+  vehicle_stolen_no: click
+  vehicle_parked_no: click
+  total_loss_no: click
+  operable_yes: click
+  rental_option: check
+  airbags_deployed_no: click
+  equipment_failure_no: click
+  vehicle_speed: "50"
+  vehicle_direction: "3"
+  first_impact_point: "3"
+  rental_begin_date: "03/13/2019"
+  rental_end_date: "03/16/2019"
+  rental_daily_rate: "50"
+  rental_customer_contact: "2"
+  rental_pick_up_location: "2"
+  vehicle_incident_ok: click
+
+

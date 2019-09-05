@@ -1,0 +1,4 @@
+SUPER_USER:
+  USERNAME: "su"
+  PASSWORD: "gw"
+  SUBMIT: "click"

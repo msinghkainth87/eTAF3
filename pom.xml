@@ -1,0 +1,495 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>selenium-cucumber</groupId>
+	<artifactId>selenium-cucumber-java</artifactId>
+	<version>0.1.3</version>
+	<packaging>jar</packaging>
+	<name>selenium-cucumber-java</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.failsafe.plugin.version>3.0.0-M3</maven.failsafe.plugin.version>
+		<maven.build.helper.plugin.version>3.0.0</maven.build.helper.plugin.version>
+		<cucumber.version>4.2.3</cucumber.version>
+		<maven.compiler.plugin.version>3.2</maven.compiler.plugin.version>
+
+		<generated.runner.directory>target/parallel/runners</generated.runner.directory>
+		<generated.feature.directory>target/parallel/features</generated.feature.directory>
+	</properties>
+
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/com.cedarsoft.commons/io -->
+		<dependency>
+			<groupId>com.cedarsoft.commons</groupId>
+			<artifactId>io</artifactId>
+			<version>8.7.0</version>
+		</dependency>
+		<!--General Reporting-->
+		<dependency>
+			<groupId>net.masterthought</groupId>
+			<artifactId>cucumber-reporting</artifactId>
+			<version>4.3.0</version>
+		</dependency>
+
+		<!--<dependency>-->
+		<!--<groupId>com.sitture</groupId>-->
+		<!--<artifactId>cucumber-jvm-extentreport</artifactId>-->
+		<!--<version>3.1.2</version>-->
+		<!--</dependency>-->
+
+		<!--<dependency>-->
+			<!--<groupId>com.vimalselvam</groupId>-->
+			<!--<artifactId>cucumber-extentsreport</artifactId>-->
+			<!--<version>3.0.2</version>-->
+		<!--</dependency>-->
+
+		<!--<dependency>-->
+			<!--<groupId>com.aventstack</groupId>-->
+			<!--<artifactId>extentreports</artifactId>-->
+			<!--<version>3.1.5</version>-->
+		<!--</dependency>-->
+
+		<!-- These are the cucumber dependencies -->
+		<!--<dependency>-->
+			<!--<groupId>info.cukes</groupId>-->
+			<!--<artifactId>cucumber-java</artifactId>-->
+			<!--<version>1.2.5</version>-->
+		<!--</dependency>-->
+
+		<!--<dependency>-->
+			<!--<groupId>info.cukes</groupId>-->
+			<!--<artifactId>cucumber-picocontainer</artifactId>-->
+			<!--<version>1.2.5</version>-->
+			<!--<scope>test</scope>-->
+		<!--</dependency>-->
+
+		<!--&lt;!&ndash; These are the cucumber-junit dependencies &ndash;&gt;-->
+		<!--<dependency>-->
+			<!--<groupId>info.cukes</groupId>-->
+			<!--<artifactId>cucumber-junit</artifactId>-->
+			<!--<version>1.2.5</version>-->
+		<!--</dependency>-->
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>${cucumber.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>${cucumber.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>datatable</artifactId>
+			<version>1.1.12</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-testng</artifactId>
+			<version>${cucumber.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-picocontainer</artifactId>
+			<version>${cucumber.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>gherkin</artifactId>
+			<version>5.1.0</version>
+		</dependency>
+
+		<!-- These are the junit dependencies -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+		<!-- These are the selenium-webdriver dependencies -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.141.59</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
+			<version>3.141.59</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-firefox-driver</artifactId>
+			<version>3.141.59</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-remote-driver</artifactId>
+			<version>3.141.59</version>
+		</dependency>
+		<!-- These are the selenium-cucumber methods dependencies -->
+		<dependency>
+			<groupId>sample</groupId>
+			<artifactId>com.sample</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/JARs/selenium-cucumber-methods-1.0.0.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>4.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.javafaker</groupId>
+			<artifactId>javafaker</artifactId>
+			<version>0.16</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>4.0.1</version>
+		</dependency>
+		<!-- these are for test data parsing using yaml-->
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-yaml</artifactId>
+			<version>2.9.6</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-text</artifactId>
+			<version>1.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.yaml</groupId>
+			<artifactId>snakeyaml</artifactId>
+			<version>1.21</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>io.cucumber</groupId>-->
+			<!--<artifactId>pro-plugin</artifactId>-->
+			<!--<version>2.1.0</version>-->
+			<!--<scope>test</scope>-->
+		<!--</dependency>-->
+		<dependency>
+			<groupId>org.mvel</groupId>
+			<artifactId>mvel2</artifactId>
+			<version>2.4.2.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20180130</version>
+		</dependency>
+		<dependency>
+			<groupId>com.codeborne</groupId>
+			<artifactId>phantomjsdriver</artifactId>
+			<version>1.4.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.intuit.karate</groupId>
+			<artifactId>karate-apache</artifactId>
+			<version>0.9.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.intuit.karate</groupId>
+			<artifactId>karate-junit4</artifactId>
+			<version>0.9.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>2.0.6</version>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>6.2.2.jre8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jgrapht</groupId>
+			<artifactId>jgrapht-core</artifactId>
+			<version>1.3.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/oracle/ojdbc6 -->
+		<!--<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>10.2.0.3.0</version>
+		</dependency>-->
+
+		<!-- https://mvnrepository.com/artifact/net.sf.ucanaccess/ucanaccess -->
+		<dependency>
+			<groupId>net.sf.ucanaccess</groupId>
+			<artifactId>ucanaccess</artifactId>
+			<version>4.0.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.healthmarketscience.jackcess/jackcess -->
+		<dependency>
+			<groupId>com.healthmarketscience.jackcess</groupId>
+			<artifactId>jackcess</artifactId>
+			<version>2.1.6</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hsqldb/hsqldb -->
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.3.1</version>
+			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>com.intuit.karate</groupId>
+            <artifactId>karate-core</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+		<dependency>
+			<groupId>org.monte</groupId>
+			<artifactId>screen-recorder</artifactId>
+			<version>0.7.7</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/JARs/screen-recorder-0.7.7.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.hervian.lambda</groupId>
+			<artifactId>lambda-factory</artifactId>
+			<version>2.0.1</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/JARs/lambda-factory-2.0.1.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ozlerhakan</groupId>
+			<artifactId>poiji</artifactId>
+			<version>1.19.2</version>
+		</dependency>
+
+		<!-- This dependency is for parallel test execution-->
+		<!-- https://mvnrepository.com/artifact/com.trivago.rta/cucable-plugin -->
+		<dependency>
+			<groupId>com.trivago.rta</groupId>
+			<artifactId>cucable-plugin</artifactId>
+			<version>1.5.1</version>
+		</dependency>
+
+
+
+		<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/sqljdbc4 -->
+
+
+		<!--Uncomment for TestNG capabilitites
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.14.3</version>
+		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-testng</artifactId>
+			<version>1.2.5</version>
+		</dependency>-->
+		<!--<dependency> &lt;!&ndash;Guava dependency causes Predefined steps to fail and also you will get Caused by: java.lang.NoSuchMethodError: com.google.common.util.concurrent.SimpleTimeLimiter.create&ndash;&gt;-->
+		<!--<groupId>com.google.guava</groupId>-->
+		<!--<artifactId>guava</artifactId>-->
+		<!--<version>21.0</version>-->
+		<!--</dependency>-->
+
+		<!--<dependency> &lt;!&ndash;Guava dependency causes Predefined steps to fail and also you will get Caused by: java.lang.NoSuchMethodError: com.google.common.util.concurrent.SimpleTimeLimiter.create&ndash;&gt;-->
+		<!--<groupId>com.google.guava</groupId>-->
+		<!--<artifactId>guava</artifactId>-->
+		<!--<version>21.0</version>-->
+		<!--</dependency>-->
+
+	</dependencies>
+
+
+
+	<build>
+		<resources>
+			<!--
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/test/resources</directory>
+			</resource>-->
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>com.trivago.rta</groupId>
+				<artifactId>cucable-plugin</artifactId>
+				<version>1.5.1</version>
+				<executions>
+					<execution>
+						<id>generate-test-resources</id>
+						<phase>generate-test-resources</phase>
+						<goals>
+							<goal>parallel</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- This can be either a Java class file or a text based template -->
+					<sourceRunnerTemplateFile>src/test/java/methods/CucableJavaTemplate.java</sourceRunnerTemplateFile>
+					<!--<sourceRunnerTemplateFile>src/test/resources/cucable.template</sourceRunnerTemplateFile>-->
+
+					<!-- process all features in the given directory -->
+					<sourceFeatures>src/test/resources</sourceFeatures>
+
+					<!-- process a specific feature file in the given directory -->
+					<!--<sourceFeatures>src/test/resources/features/testfeature/MyTest9.feature</sourceFeatures>-->
+
+					<!-- process multiple feature files -->
+					<!--<sourceFeatures>-->
+					<!--src/test/resources/features/testfeature2,-->
+					<!--src/test/resources/features/testfeature/MyTest8.feature-->
+					<!--</sourceFeatures>-->
+
+					<!-- process a specific feature file and specific line numbers in the given directory -->
+					<!--<sourceFeatures>src/test/resources/features/testfeature/MyTest1.feature:8:19</sourceFeatures>-->
+
+					<generatedFeatureDirectory>${generated.feature.directory}</generatedFeatureDirectory>
+					<generatedRunnerDirectory>${generated.runner.directory}</generatedRunnerDirectory>
+
+					<!-- optional: custom data that is available in Cucable placeholders in a template -->
+					<!--<customPlaceholders>-->
+					<!--<comment>This should appear inside the template</comment>-->
+					<!--</customPlaceholders>-->
+
+					<!-- optional: Cucumber tag expression to include or exclude scenarios with certain tags (see https://docs.cucumber.io/cucumber/api/#tag-expressions) -->
+					<includeScenarioTags>@newpolicy</includeScenarioTags>
+					<!--<includeScenarioTags>not @skipMe</includeScenarioTags>-->
+					<!--<includeScenarioTags>(@scenario1Tag1 or @scenario1Tag2) and not @skipMe</includeScenarioTags>-->
+
+					<!-- optional: change parallelization mode of Cucable (default: 'scenarios')-->
+					<!--<parallelizationMode>scenarios</parallelizationMode>-->
+					<!--<parallelizationMode>features</parallelizationMode>-->
+
+					<!-- optional: number of test runs to create runners and features multiple times
+                         if set to a number greater than 1 -->
+					<!--<numberOfTestRuns>1</numberOfTestRuns>-->
+
+					<!-- optional: generate a fixed number of runners and distribute all features round-robin.
+                     This can only be used if desiredNumberOfFeaturesPerRunner is NOT used! -->
+					<!--<desiredNumberOfRunners>2</desiredNumberOfRunners>-->
+
+					<!-- optional: distribute a fixed number features per runner round-robin.
+                    This can only be used if desiredNumberOfRunners is NOT used! -->
+					<!--<desiredNumberOfFeaturesPerRunner>4</desiredNumberOfFeaturesPerRunner>-->
+
+					<!-- optional: Cucable log level -->
+					<!--<logLevel>default</logLevel>-->
+					<!--<logLevel>compact</logLevel>-->
+					<!--<logLevel>minimal</logLevel>-->
+					<!--<logLevel>off</logLevel>-->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>${maven.build.helper.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>add-test-source</id>
+						<phase>generate-test-sources</phase>
+						<goals>
+							<goal>add-test-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>${generated.runner.directory}</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>${maven.failsafe.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>Run parallel tests</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>integration-test</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+					<forkCount>2</forkCount>
+					<reuseForks>false</reuseForks>
+					<argLine>-Dfile.encoding=UTF-8</argLine>
+					<disableXmlReport>true</disableXmlReport>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>com.trivago.rta</groupId>
+				<artifactId>cluecumber-report-plugin</artifactId>
+				<version>1.10.0</version>
+				<executions>
+					<execution>
+						<id>report</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>reporting</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<sourceJsonReportDirectory>${project.build.directory}</sourceJsonReportDirectory>
+					<generatedHtmlReportDirectory>${project.build.directory}</generatedHtmlReportDirectory>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<source>1.8</source>
+					<target>1.8</target>
+					<compilerArgument>-Werror</compilerArgument>
+				</configuration>
+
+			</plugin>
+
+		</plugins>
+	</build>
+</project>

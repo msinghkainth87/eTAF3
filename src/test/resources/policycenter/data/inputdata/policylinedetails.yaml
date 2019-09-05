@@ -1,0 +1,5 @@
+HAPPY_PATH:
+  PRODUCT: "::ByText::Business Auto"
+  FLEET: "::ByText::Fewer than 10 units"
+  COMMERCIAL_AUTO_OWNED_LIABILITY_1: "click"
+  NEXT: "click"
